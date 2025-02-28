@@ -24,7 +24,6 @@ const RestaurantHeader = ({restaurant}: RestaurantHeaderProps) => {
         <Button variant="secondary" size="icon" className="absolute top-5 right-4 rounded-full z-50">
             <ScrollTextIcon></ScrollTextIcon>
         </Button>
-       
             <Image src={restaurant.coverImageUrl} alt={restaurant.name} fill />
     </div>  
     );

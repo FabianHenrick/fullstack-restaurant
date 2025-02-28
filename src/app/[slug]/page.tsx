@@ -19,7 +19,7 @@ const RestaurantPage = async ({params}:RestaurantPageProps) => {
     <div className= 'flex h-screen flex-col items-center justify-center px-6 pt-24'>
         {/* Logo e Título */}
         <div className="flex flex-col items-center gap2">
-            <Image src={restaurant.coverImageUrl} alt={restaurant.name} width={82} height={82} priority/>
+            <Image src={restaurant.avatarImageUrl} alt={restaurant.name} width={82} height={82} priority/>
             <h2 className="font-semibold">{restaurant.name}</h2>
         </div>
         {/* Bem Vindo */}
