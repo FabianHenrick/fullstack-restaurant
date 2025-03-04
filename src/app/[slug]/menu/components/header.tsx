@@ -6,27 +6,31 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 interface RestaurantHeaderProps {
-restaurant: Pick< Restaurant, "coverImageUrl" | "name">;
-
+  restaurant: Pick<Restaurant, "coverImageUrl" | "name">;
 }
 
-
-const RestaurantHeader = ({restaurant}: RestaurantHeaderProps) => {
-    const router = useRouter()
-    return (
-    
+const RestaurantHeader = ({ restaurant }: RestaurantHeaderProps) => {
+  const router = useRouter();
+  return (
     <div className="relative h-[250px] w-full">
-        <Button variant="secondary" size="icon" className="absolute top-5 left-4 rounded-full z-50"
+      <Button
+        variant="secondary"
+        size="icon"
+        className="absolute left-4 top-5 z-50 rounded-full"
         onClick={() => router.back()}
-        >
-            <ChevronLeftIcon />
-        </Button>
-        <Button variant="secondary" size="icon" className="absolute top-5 right-4 rounded-full z-50">
-            <ScrollTextIcon></ScrollTextIcon>
-        </Button>
-            <Image src={restaurant.coverImageUrl} alt={restaurant.name} fill />
-    </div>  
-    );
-}
- 
+      >
+        <ChevronLeftIcon />
+      </Button>
+      <Button
+        variant="secondary"
+        size="icon"
+        className="absolute right-4 top-5 z-50 rounded-full"
+      >
+        <ScrollTextIcon></ScrollTextIcon>
+      </Button>
+      <Image src={restaurant.coverImageUrl} alt={restaurant.name} fill />
+    </div>
+  );
+};
+
 export default RestaurantHeader;

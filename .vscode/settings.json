@@ -1,21 +1,19 @@
 {
-  "eslint.workingDirectories": [{ "mode": "auto" }],
-
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
   "eslint.validate": [
     "javascript",
     "javascriptreact",
     "typescript",
     "typescriptreact"
   ],
-
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "notebook.defaultFormatter": "rvest.vs-code-prettier-eslint",
-  "notebook.formatOnSave.enabled": true,
   "editor.formatOnSave": true,
-  "gitlens.defaultDateFormat": "",
-  "gitlens.defaultTimeFormat": "",
-  "gitlens.defaultDateShortFormat": ""
+  "eslint.format.enable": true
 }
