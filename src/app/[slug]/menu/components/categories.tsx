@@ -26,7 +26,7 @@ const ResaurantCategories = ({ restaurant }: ResaurantCategoriesProps) => {
   };
 
   return (
-    <div className="relative z-50 mt-[-1.5rem] rounded-t-3xl border bg-white">
+    <div className="relative z-50 mt-[-1.5rem] rounded-t-3xl bg-white">
       <div className="p-5">
         <div className="flex items-center gap-3">
           <Image
@@ -62,7 +62,8 @@ const ResaurantCategories = ({ restaurant }: ResaurantCategoriesProps) => {
           ))}
         </div>
         <ScrollBar orientation="horizontal" />
-      </ScrollArea>
+      </ScrollArea>{" "}
+      <h3 className="px-5 pt-2 font-semibold">{selectedCategory.name}</h3>
       <Products products={selectedCategory.products} />
     </div>
   );

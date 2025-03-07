@@ -9,22 +9,33 @@ interface ProductProps {
 
 const Products = ({ products }: ProductProps) => {
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 p-5">
       {products.map((product) => (
         <Link
           key={product.id}
           href={""}
-          className="flex items-center justify-between gap-10"
+          className="flex items-center justify-between gap-10 border-b"
         >
           <div>
             <h3>{product.name}</h3>
+            <p className="line-clamp-2 text-sm text-muted-foreground">
+              {product.description}
+            </p>
+            <p className="pt-3 text-sm font-semibold">
+              {new Intl.NumberFormat("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+              }).format(product.price)}{" "}
+            </p>
           </div>
-          <Image
-            src={product.imageUrl}
-            alt={product.name}
-            width={100}
-            height={100}
-          />
+          <div className="relative min-h-[82px] min-w-[120px]">
+            <Image
+              src={product.imageUrl}
+              alt={product.name}
+              fill
+              className="rounded-lg object-contain"
+            />
+          </div>
         </Link>
       ))}
     </div>
