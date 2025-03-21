@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Prisma } from "@prisma/client";
 import {
   ChefHat,
@@ -37,8 +38,8 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
     setQuantity((prev) => prev + 1);
   };
   return (
-    <div className="relative z-50 mt-[-1.5rem] flex flex-auto flex-col rounded-t-3xl p-5">
-      <div className="flex-auto">
+    <div className="relative z-50 mt-[-1.5rem] flex flex-auto flex-col overflow-hidden rounded-t-3xl p-5">
+      <div className="flex-auto overflow-hidden">
         {/* RESTAURANTE */}
         <div className="flex items-center gap-1">
           {" "}
@@ -56,7 +57,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
         {/* NOME DO PRODUTO */}
         <h2 className="mt-1 text-xl font-semibold">{product.name}</h2>
         {/* PREÇO E QUANTIDADE */}
-        <div className="flex items-center justify-between">
+        <div className="mt-3 flex items-center justify-between">
           <h3 className="text-xl font-semibold">
             {new Intl.NumberFormat("pt-BR", {
               style: "currency",
@@ -81,20 +82,28 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
             </Button>
           </div>
         </div>
-        {/* SOBRE */}
-        <div className="mt-6 space-y-3">
-          <h4 className="font-semibold"></h4>
-          <p className="text-sm text-muted-foreground">{product.description}</p>
-        </div>
-        {/* INGREDIENTES */}
-        <div className="mt-6 space-y-3">
-          <div>
+        <ScrollArea className="h-full">
+          {/* SOBRE */}
+          <div className="mt-6 space-y-3">
             <h4 className="font-semibold"></h4>
-            <ChefHatIcon size={18} />
+            <p className="text-sm text-muted-foreground">
+              {product.description}
+            </p>
           </div>
+          {/* INGREDIENTES */}
+          <div className="mt-6 space-y-3">
+            <div>
+              <h4 className="font-semibold"></h4>
+              <ChefHatIcon size={18} />
+            </div>
 
-          <p className="text-sm text-muted-foreground">{product.ingredients}</p>
-        </div>
+            <ul className="list-disc px-5 text-sm text-muted-foreground">
+              {product.ingredients.map((ingredient) => (
+                <li key={ingredient}>{ingredient}</li>
+              ))}
+            </ul>
+          </div>
+        </ScrollArea>
       </div>
       <Button className="mt-6 w-full rounded-full"> Adcionar à sacola </Button>
     </div>
