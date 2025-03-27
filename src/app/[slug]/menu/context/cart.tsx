@@ -37,7 +37,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       setProducts((prev) => [...prev, product]);
       return;
     }
-{/* Atualiza a quantidade do produto caso já esteja no carrinho */}
+    {/* Atualiza a quantidade do produto caso já esteja no carrinho */}
     setProducts((prevProducts) =>
       prevProducts.map((item) =>
         item.id === product.id ? { ...item, quantity: item.quantity + product.quantity } : item

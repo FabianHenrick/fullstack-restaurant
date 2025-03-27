@@ -1,9 +1,8 @@
-import { db } from "@/lib/prisma";
+
 import { getRestaurantBySlug } from "../data/get-restaurant-by-slug";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+
 import ConsumptionMethodOption from "./components/consumption-method-option";
 
 interface RestaurantPageProps {
