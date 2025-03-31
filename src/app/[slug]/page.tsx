@@ -18,7 +18,7 @@ const RestaurantPage = async ({ params }: RestaurantPageProps) => {
   return (
     <div className="flex h-screen flex-col items-center justify-center px-6 pt-24">
       {/* Logo e Título */}
-      <div className="gap2 flex flex-col items-center">
+      <div className="gap-2 flex flex-col items-center">
         <Image
           src={restaurant.avatarImageUrl}
           alt={restaurant.name}
@@ -37,7 +37,7 @@ const RestaurantPage = async ({ params }: RestaurantPageProps) => {
           praticidade e sabor em cada detalhe!
         </p>
       </div>
-      <div className="grid grid-cols-2 gap-4 pt-14">
+      <div className="grid grid-cols-2 justify-content gap-4 pt-14 flex">
         <ConsumptionMethodOption
           slug={slug}
           buttonText="Para comer aqui"

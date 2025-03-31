@@ -6,11 +6,14 @@ import Image from "next/image";
 import { Product } from "@prisma/client";
 import { useRouter } from "next/navigation";
 
+import { ICartContext } from "../../context/cart";
+
+
 interface ProductHeaderProps {
   product: Pick<Product, "name" | "imageUrl">;
 }
 
-const ProductHeader = ({ product }: ProductHeaderProps) => {
+const ProductHeader = ({ product }: ProductHeaderProps ) => {
   const router = useRouter();
 
   return (
@@ -27,6 +30,7 @@ const ProductHeader = ({ product }: ProductHeaderProps) => {
         variant="secondary"
         size="icon"
         className="absolute right-4 top-5 z-50 rounded-full"
+      
       ></Button>
       <Image
         src={product.imageUrl}
