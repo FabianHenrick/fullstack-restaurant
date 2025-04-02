@@ -16,9 +16,11 @@ const CartSheet = () => {
         <SheetDescription>
         </SheetDescription>
       </SheetHeader>
-      {products.map(product =>(
+      <div className="p-y-5">{products.map(product =>(
         <CartProductItem key={product.id} product={product} />
       ))}
+      </div>
+      
     </SheetContent>
   </Sheet> );
 }

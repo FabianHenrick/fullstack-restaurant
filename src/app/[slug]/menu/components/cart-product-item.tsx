@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { CartProduct } from "../context/cart";
 import { Button } from "@/components/ui/button";
-import {  ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import {  ChevronLeftIcon, ChevronRightIcon, TrashIcon } from "lucide-react";
 
 interface CartItemProsps{
   product:CartProduct
@@ -9,27 +9,33 @@ interface CartItemProsps{
 
 const CartProductItem = ({product}: CartItemProsps) => {
   return ( 
-  <div className="flex items-center justify-between">
+  <div className="flex items-center justify-between ">
+    <div className="flex items-center gap-3 mb-5">
     {/* ESQUERDA */}
-    <div className="relative h-20 w-20 bg-gray-100 rounded-xl">
-      <Image src={product.imageUrl} alt={product.name} fill/>
+      <div className="relative h-20 w-20 bg-gray-100 rounded-xl">
+        <Image src={product.imageUrl} alt={product.name} fill/>
       </div>
-      <div className="space-y-1">
-        <p className="text-xs">{product.name}</p>
-        <p className="text-sm font-semibold">{new Intl.NumberFormat("pt-BR", {
+      <div className="space-y-1 ">
+          <p className="max-w-[95%] truncate text-xs text-ellipsis">{product.name}</p>
+          <p className="text-sm font-semibold">{new Intl.NumberFormat("pt-BR", {
                 style: "currency",
                 currency: "BRL",
               }).format(product.price)}{" "}</p>
-        <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1">
+    </div>
           {/* QUANTIDADE */}
               <div className="flex items-center gap-1 text-center">
                 <Button variant={"destructive"} className="h-7 w-7 rounded-lg"><ChevronLeftIcon size={14}/></Button>
                 <p className="text-xs w-7">{product.quantity}</p>
                 <Button variant={"destructive"} className="w-7 rounded-lg h-7"><ChevronRightIcon size={14}  /></Button>
               </div>
-        </div>
-    </div>
-  </div> );
+        </div> {/* BOTÃO DE DELETAR */}
+      </div>
+          <Button className="h-7 w-7 rounded-lg" variant={"outline"}>
+            <TrashIcon></TrashIcon>
+          </Button>
+  </div> 
+  );
 }
  
 export default CartProductItem;
