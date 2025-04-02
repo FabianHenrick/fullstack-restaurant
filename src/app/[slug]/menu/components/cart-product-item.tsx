@@ -1,13 +1,16 @@
+"use client"
 import Image from "next/image";
-import { CartProduct } from "../context/cart";
+import { CartContext, CartProduct } from "../context/cart";
 import { Button } from "@/components/ui/button";
 import {  ChevronLeftIcon, ChevronRightIcon, TrashIcon } from "lucide-react";
+import { useContext } from "react";
 
 interface CartItemProsps{
   product:CartProduct
 }
 
 const CartProductItem = ({product}: CartItemProsps) => {
+  const{decreaseProductQuantity}= useContext(CartContext)
   return ( 
   <div className="flex items-center justify-between ">
     <div className="flex items-center gap-3 mb-5">
@@ -25,7 +28,7 @@ const CartProductItem = ({product}: CartItemProsps) => {
     </div>
           {/* QUANTIDADE */}
               <div className="flex items-center gap-1 text-center">
-                <Button variant={"destructive"} className="h-7 w-7 rounded-lg"><ChevronLeftIcon size={14}/></Button>
+                <Button variant={"destructive"} className="h-7 w-7 rounded-lg" onClick={()=>decreaseProductQuantity(product.id)}><ChevronLeftIcon size={14}/></Button>
                 <p className="text-xs w-7">{product.quantity}</p>
                 <Button variant={"destructive"} className="w-7 rounded-lg h-7"><ChevronRightIcon size={14}  /></Button>
               </div>
