@@ -1,4 +1,3 @@
-
 import { getRestaurantBySlug } from "../data/get-restaurant-by-slug";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -18,7 +17,7 @@ const RestaurantPage = async ({ params }: RestaurantPageProps) => {
   return (
     <div className="flex h-screen flex-col items-center justify-center px-6 pt-24">
       {/* Logo e Título */}
-      <div className="gap-2 flex flex-col items-center">
+      <div className="flex flex-col items-center gap-2">
         <Image
           src={restaurant.avatarImageUrl}
           alt={restaurant.name}
@@ -37,7 +36,7 @@ const RestaurantPage = async ({ params }: RestaurantPageProps) => {
           praticidade e sabor em cada detalhe!
         </p>
       </div>
-      <div className="grid grid-cols-2 justify-content gap-4 pt-14 flex">
+      <div className="justify-content grid grid-cols-2 gap-4 pt-14">
         <ConsumptionMethodOption
           slug={slug}
           buttonText="Para comer aqui"

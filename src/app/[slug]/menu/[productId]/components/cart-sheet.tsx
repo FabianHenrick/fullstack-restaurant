@@ -5,6 +5,7 @@ import CartProductItem from "../../components/cart-product-item";
 import { CartProduct } from "../../context/cart";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import FinishOrderButton from "./finish-order-button";
 
 
 
@@ -18,7 +19,7 @@ const CartSheet = () => {
         <SheetDescription>
         </SheetDescription>
       </SheetHeader>
-      <div className="p-y-5 flex flex-col h-[97%]">
+      <div className="p-y-5 flex flex-col h-[93%]">
         <div className="flex-auto"> 
           {products.map(product =>(
             <CartProductItem key={product.id} product={product} />
@@ -36,9 +37,9 @@ const CartSheet = () => {
             </div>
           </CardContent>
         </Card>
-        <Button className="rounded-full">Finalizar Pedido</Button>
+        
       </div>
-      
+      <FinishOrderButton/>
     </SheetContent>
   </Sheet> );
 }
