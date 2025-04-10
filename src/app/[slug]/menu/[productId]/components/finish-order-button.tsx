@@ -68,7 +68,7 @@ const FinishOrderButton = () => {
               <FormField
                 control={form.control}
                 name="name"
-                render={(field) => (
+                render={({ field }) => (
                   <FormItem>
                     <FormLabel>Seu Nome</FormLabel>
                     <FormControl>
@@ -81,7 +81,7 @@ const FinishOrderButton = () => {
               <FormField
                 control={form.control}
                 name="cpf"
-                render={(field) => (
+                render={({ field }) => (
                   <FormItem>
                     <FormLabel>Seu CPF</FormLabel>
                     <FormControl>
