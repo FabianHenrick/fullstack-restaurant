@@ -9,8 +9,9 @@ import { useContext, useState } from "react";
 import { CartContext } from "../../context/cart";
 import CartProductItem from "../../components/cart-product-item";
 import { Card, CardContent } from "@/components/ui/card";
-import FinishOrderDialog from "./finish-order-dialog";
+
 import { Button } from "@/components/ui/button";
+import FinishOrderDialog from "./finish-order-dialog";
 
 const CartSheet = () => {
   const [finishOrderDialogIsOpen, setFinishOrderDialogIsOpen] = useState(false);
