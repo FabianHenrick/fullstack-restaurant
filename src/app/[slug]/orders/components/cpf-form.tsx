@@ -52,7 +52,7 @@ const pathname = usePathname()
                   <FormItem className="px-4">
                     <FormLabel>Seu Cpf</FormLabel>
                     <FormControl>
-                      <Input placeholder="Digite seu CPF" {...field}></Input>
+                      <Input placeholder="Digite seu CPF" {...field} type="number"></Input>
                     </FormControl>
                     <FormMessage />
                   </FormItem>

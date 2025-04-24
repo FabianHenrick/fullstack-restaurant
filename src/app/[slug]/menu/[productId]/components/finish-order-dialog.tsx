@@ -25,7 +25,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { createOrder } from "../../actions/create-order";
-import { use, useContext, useTransition } from "react";
+import { use, useContext, useState, useTransition } from "react";
 import { useParams, useSearchParams } from "next/navigation";
 import { ConsumptionMethod } from "@prisma/client";
 import { CartContext } from "../../context/cart";
@@ -50,6 +50,7 @@ interface FinishOrderDialogProps {
 }
 
 const FinishOrderDialog = ({ open, onOpenChange }: FinishOrderDialogProps) => {
+
   const { slug } = useParams<{ slug: string }>();
   const searchParams = useSearchParams();
   const { products } = useContext(CartContext);
@@ -107,7 +108,12 @@ const FinishOrderDialog = ({ open, onOpenChange }: FinishOrderDialogProps) => {
                   <FormItem>
                     <FormLabel>Seu Nome</FormLabel>
                     <FormControl>
-                      <Input placeholder="Digite seu nome" {...field}></Input>
+                      <Input placeholder="Digite seu nome" type="text" 
+                       {...field}
+                       onChange={(e) => {
+                        const noNumbers = e.target.value.replace(/[^a-zA-ZÀ-ÿ\u00C0-\u017F ]/g, '');
+                        field.onChange(noNumbers);
+                      }}></Input>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -124,6 +130,7 @@ const FinishOrderDialog = ({ open, onOpenChange }: FinishOrderDialogProps) => {
                         placeholder="Digite seu CPF..."
                         format="###.###.###-##"
                         customInput={Input}
+                        
                         {...field}
                       />
                     </FormControl>

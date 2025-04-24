@@ -26,8 +26,12 @@ const CartSheet = () => {
         </SheetHeader>
         <div className="p-y-5 flex h-[93%] flex-col">
           <div className="flex-auto">
-            {products.map((product) => (
-              <CartProductItem key={product.id} product={product} />
+            {products.length === 0 && (
+              <h1 className="text-center text-sm text-muted-foreground">
+                Adicione produtos à sacola antes de finalizar o pedido.
+              </h1>
+            )}
+            {products.map((product) => (  <CartProductItem key={product.id} product={product} />
             ))}
           </div>
           <Card className="mb-6">
@@ -47,9 +51,10 @@ const CartSheet = () => {
         <Button
           className="rounded-full"
           onClick={() => setFinishOrderDialogIsOpen(true)}
+          disabled={products.length === 0}
         >
           Finalizar Pedido
-        </Button>
+        </Button >
         <FinishOrderDialog
           open={finishOrderDialogIsOpen}
           onOpenChange={setFinishOrderDialogIsOpen}
