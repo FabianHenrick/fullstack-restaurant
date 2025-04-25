@@ -4,8 +4,8 @@ import RestaurantHeader from "./components/restaurant-header";
 import ResaurantCategories from "./components/categories";
 
 interface RestaurantPageProps {
-  params: { slug?: string }; // ❗ Garantir que `slug` pode ser opcional
-  searchParams?: { consumptionMethod?: string };
+  params: Promise<{ slug?: string }>;
+  searchParams: Promise<{ consumptionMethod?: string }>;
 }
 
 const isConsumptionMethodValid = (consumptionMethod?: string) => {
@@ -14,9 +14,12 @@ const isConsumptionMethodValid = (consumptionMethod?: string) => {
     : false;
 };
 
-const RestaurantMenuPage = async (props: RestaurantPageProps) => {
-  const slug = await props.params?.slug;
-  const consumptionMethod = props.searchParams?.consumptionMethod || "";
+const RestaurantMenuPage = async ({
+  params,
+  searchParams,
+}: RestaurantPageProps) => {
+  const { slug } = await params;
+  const { consumptionMethod } = await searchParams;
 
   if (!slug || !isConsumptionMethodValid(consumptionMethod)) {
     return notFound();
