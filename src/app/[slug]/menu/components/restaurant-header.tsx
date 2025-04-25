@@ -31,7 +31,7 @@ const {toggleCart} = useContext(CartContext);
         variant="secondary"
         size="icon"
         className="absolute right-4 top-5 z-50 rounded-full" 
-         onClick={toggleCart}>
+        onClick={toggleCart}>
         <ScrollTextIcon/>
       </Button>
       <Image src={restaurant.coverImageUrl} alt={restaurant.name} fill />

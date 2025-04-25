@@ -1,12 +1,13 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ChevronLeftIcon } from "lucide-react";
+import { ChevronLeftIcon, ScrollTextIcon } from "lucide-react";
 import Image from "next/image";
 import { Product } from "@prisma/client";
 import { useRouter } from "next/navigation";
 
-import { ICartContext } from "../../context/cart";
+import { CartContext, ICartContext } from "../../context/cart";
+import { useContext } from "react";
 
 
 interface ProductHeaderProps {
@@ -15,7 +16,7 @@ interface ProductHeaderProps {
 
 const ProductHeader = ({ product }: ProductHeaderProps ) => {
   const router = useRouter();
-
+  const {toggleCart} = useContext<ICartContext>(CartContext); 
   return (
     <div className="relative h-[300px] min-h-[300px] w-full">
       <Button
@@ -30,8 +31,9 @@ const ProductHeader = ({ product }: ProductHeaderProps ) => {
         variant="secondary"
         size="icon"
         className="absolute right-4 top-5 z-50 rounded-full"
+        onClick={toggleCart}
       
-      ></Button>
+      ><ScrollTextIcon/></Button>
       <Image
         src={product.imageUrl}
         alt={product.name}
